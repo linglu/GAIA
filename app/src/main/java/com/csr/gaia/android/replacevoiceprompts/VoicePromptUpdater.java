@@ -387,18 +387,20 @@ public class VoicePromptUpdater extends Activity implements SelectDeviceDialogFr
         // that will be processed in handleTheUnhandled() to update the local variables holding state about the remote device.
         if (mIsConnected) {
             try {
-                mGaiaLink.sendCommand(Gaia.VENDOR_CSR, Gaia.COMMAND_GET_TTS_LANGUAGE);
-                mGaiaLink.sendCommand(Gaia.VENDOR_CSR, Gaia.COMMAND_GET_API_VERSION);
-                mGaiaLink.sendCommand(Gaia.VENDOR_CSR, Gaia.COMMAND_GET_CURRENT_RSSI);
-                mGaiaLink.sendCommand(Gaia.VENDOR_CSR, Gaia.COMMAND_GET_CURRENT_BATTERY_LEVEL);
-                mGaiaLink.sendCommand(Gaia.VENDOR_CSR, Gaia.COMMAND_RETRIEVE_FULL_PS_KEY, 0x02, 0x99); // PSKEY_FEATURE_BLOCK
-                mGaiaLink.sendCommand(Gaia.VENDOR_CSR, Gaia.COMMAND_RETRIEVE_FULL_PS_KEY, 0x02, 0x93); // PSKEY_USER_CONFIGURATION_9
+                mGaiaLink.sendCommand(Gaia.VENDOR_NONE, Gaia.COMMAND_GET_TTS_LANGUAGE);
+                mGaiaLink.sendCommand(Gaia.VENDOR_NONE, Gaia.COMMAND_GET_API_VERSION);
+                mGaiaLink.sendCommand(Gaia.VENDOR_NONE, Gaia.COMMAND_GET_CURRENT_RSSI);
+                mGaiaLink.sendCommand(Gaia.VENDOR_NONE, Gaia.COMMAND_GET_CURRENT_BATTERY_LEVEL);
+                mGaiaLink.sendCommand(Gaia.VENDOR_NONE, Gaia.COMMAND_RETRIEVE_FULL_PS_KEY, 0x02, 0x99); // PSKEY_FEATURE_BLOCK
+                mGaiaLink.sendCommand(Gaia.VENDOR_NONE, Gaia.COMMAND_RETRIEVE_FULL_PS_KEY, 0x02, 0x93); // PSKEY_USER_CONFIGURATION_9
                 mGaiaLink.sendCommand(Gaia.VENDOR_CSR, Gaia.COMMAND_RETRIEVE_FULL_PS_KEY, 0x02, 0xb9); // PSKEY_FEATURE_BLOCK
                 mGaiaLink.sendCommand(Gaia.VENDOR_CSR, Gaia.COMMAND_GET_LED_CONTROL);
                 mGaiaLink.sendCommand(Gaia.VENDOR_CSR, Gaia.COMMAND_GET_BOOT_MODE);
-                /*Below code is just for demo, set PSKEY configuration data 47 as initial value 
-                 *0x0000 means whole partitions are unused.
+
+                /*  Below code is just for demo, set PSKEY configuration data 47 as initial value
+                 *  0x0000 means whole partitions are unused.
                  */
+
                 byte[] Pskeydata47 = new byte[4];
                 Pskeydata47[0] = (byte) 0x00;
                 Pskeydata47[1] = (byte) 0x2f;

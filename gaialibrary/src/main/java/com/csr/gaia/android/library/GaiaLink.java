@@ -583,15 +583,16 @@ public class GaiaLink
      */
     private void sendCommandData(byte[] data) throws IOException
     {
-        DebugLog.d(DebugLog.TAG, "GaiaLink:sendCommandData " + "");
+        DebugLog.d(DebugLog.TAG, "GaiaLink:sendCommandData " + Utils.printHexString(data));
+
         switch (mTransport)
         {
         case BT_SPP:
         case BT_GAIA:
             if (mBTSocket == null)
                 throw new IOException(NOT_CONNECTED);
-            
-            DebugLog.d(DebugLog.TAG, "GaiaLink:sendCommandData " + "send " + data.length);
+
+            DebugLog.d(DebugLog.TAG, "GaiaLink:sendCommandData " + Utils.printHexString(data));
             mBTSocket.getOutputStream().write(data);
             break;
             
@@ -1100,15 +1101,14 @@ public class GaiaLink
             
             if (mReceiveHandler == null)
                 DebugLog.d(DebugLog.TAG, "Reader:run " + "reader: no receive handler");
-
             else
                 mReceiveHandler.obtainMessage(Message.DISCONNECTED.ordinal()).sendToTarget();
         }
         
-        private void runSppReader()
-        {
+        private void runSppReader() {
+
             byte[] buffer = new byte[MAX_BUFFER];
-            int bytes;
+            int length;
             
             going = false;
             
@@ -1144,36 +1144,31 @@ public class GaiaLink
 
             DebugLog.d(DebugLog.TAG, "Reader:runSppReader " + "going : " + going);
             while (going) {
-            	try
-                {                    
-            		bytes = mInputStream.read(buffer);
-                    if (bytes < 0) {
+            	try {
+
+            		length = mInputStream.read(buffer);
+                    if (length < 0) {
                         DebugLog.d(DebugLog.TAG, "Reader:runSppReader " + "bytes < 0");
                     	going = false;
-                    }
-                    else {
-                        scanStream(buffer, bytes);
+                    } else {
+                        scanStream(buffer, length);
                         updateDataConnectionStatus(true);
                     }
-                } 
-                catch (IOException e)
-                {        
-                    if (mDebug) Log.e(TAG, "runSppReader: read: " + e.toString());
+                } catch (IOException e) {
+                    DebugLog.d(DebugLog.TAG, "Reader:runSppReader " + Log.getStackTraceString(e));
                     going = false;
                 }  
             }
             
         }
                 
-        private void runUdpReader()
-        {
+        private void runUdpReader() {
+
             going = false;
-            
-            if (mReceiveHandler == null)
-            {
+            if (mReceiveHandler == null) {
                 if (mDebug) Log.e(TAG, "No receive_handler");
             }
-            
+
             else
             {
                 byte[] buffer = new byte[MAX_BUFFER];            
@@ -1226,18 +1221,17 @@ public class GaiaLink
 
             DebugLog.d(DebugLog.TAG, "Reader:scanStream "
                     + "buffer " + Utils.printHexString(buffer)
-                    + " buffer.length " + buffer.length
                     + " length " + length);
 
-            for (int i = 0; i < length; ++i)
-            {
-                if ((packet_length > 0) && (packet_length < Gaia.MAX_PACKET))
-                {
+            for (int i = 0; i < length; ++i) {
+
+                DebugLog.d(DebugLog.TAG, "Reader:scanStream " + "packet_length : " + packet_length);
+                if ((packet_length > 0) && (packet_length < Gaia.MAX_PACKET)) {
+
                     packet[packet_length] = buffer[i];
-                    
                     if (packet_length == Gaia.OFFS_FLAGS)
                          flags = buffer[i];
-                    
+
                     else if (packet_length == Gaia.OFFS_PAYLOAD_LENGTH)
                     {
                         expected = buffer[i] + Gaia.OFFS_PAYLOAD + (((flags & Gaia.FLAG_CHECK) != 0) ? 1 : 0);
