@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GAIA App v2</string>
+    <string name="channel_connection_desc">No Device Connected</string>
+    <string name="connect">Connect</string>
+    <string name="selection">Select</string>
+    <string name="connected">CONNECTED</string>
+    <string name="connection_state">Connection State:</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="disconnected">DISCONNECTED</string>
+    <string name="connection_error">CONNECTION ERROR</string>
+    <string name="select_device">Select a device</string>
+    <string name="boot_mode">Boot Mode</string>
+    <string name="api_version">Version</string>
+    <string name="current_rssi_label">Signal: </string>
+    <string name="battery_level_label">Battery: </string>
+    <string name="language_id_label">Language</string>
+    <string name="menu_settings">Settings</string>
+    <string name="file_dialog">Choose voice prompt file</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    
+    <string name="tab1_name">Status</string>
+    <string name="tab2_name">Update</string>
+    <string name="led_control">Turn on LED</string>
+    <string name="aptx_control">Enable aptX® </string>
+    <string name="change_language">Change Language</string>
+    <string name="update_language">Update Language</string>
+    
+    <string name="progress_message1">Connecting&#8230;</string>
+    <string name="progress_message2">Waiting&#8230;</string>
+    <string name="otaupdate_noupdate">No Update</string>
+    
+    <string name="signal_label">Signal</string>
+    <string name="battery_label">Battery</string>
+    <string name="scan">Devices</string>
+    
+    <string name="confirmation">Confirmation</string>
+    <string name="confirmation_reboot">Device will reboot, are you sure?</string>
+    <string name="confirmation_reboot_for_languagechange">Language has been changed, do you want to reboot now?</string>
+    <string name="confirmation_reboot_for_aptx">Aptx feature has been changed, do you want to reboot now?</string>
+    <string name="no_valid_partition">No unmounted partition, please reboot and try again?</string>
+    <string name="restore_discoverablemode">Set devcie to discoverable mode at all times, reboot it now?</string>
+    <string name="change_mode">Reboot device</string>
+    <string name="refresh">Refresh</string>
+    <string name="about">About</string>
+    
+    <!-- android-file-dialog string values -->
+    <string name="location">Location</string>
+    <string name="cant_read_folder">folder can\'t be read!</string>
+    <string name="select">Select</string>
+    <string name="no_data">No Data</string>
+    <string name="update_at">Updated at: </string>
+    <string name="no_update">No update</string>
+    <string name="updating">Updating&#8230;</string>
+    <string name="null_string">N/A</string>
+    <string name="voice_prompt_dialog_title">Local Language Voice Prompt</string>
+    <string name="about_dialog_title">About</string>
+    <string name="about_dialog_message">VM Application is following the link to www.csr.com</string>
+</resources>
+

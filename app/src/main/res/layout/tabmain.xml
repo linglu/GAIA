@@ -1,0 +1,94 @@
+<LinearLayout android:id="@+id/all_details"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="5dp"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/connection_state"
+                  android:textSize="18sp"
+                  android:textStyle="bold"/>
+
+        <TextView android:id="@+id/connect_ind"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/disconnected"
+                  android:textSize="18sp"/>
+
+        <ImageView android:id="@+id/data_ind"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:layout_marginTop="4dp"
+                   android:contentDescription="@null"
+                   android:src="@drawable/led_indicator"/>
+    </LinearLayout>
+
+    <TabHost
+        android:id="@+id/tabHost"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dip"
+        android:theme="@android:style/Theme">
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:theme="@android:style/Theme"/>
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:id="@+id/tab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="70dp">
+
+                <TextView android:id="@+id/device_name"
+                          style="?android:attr/listSeparatorTextViewStyle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:paddingTop="6dip"
+                          android:text="@string/channel_connection_desc"
+                          android:textSize="15sp"
+                          android:textStyle="bold"/>
+
+                <ListView
+                    android:id="@+id/info_listview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:dividerHeight="3dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:padding="8dp"
+                    android:paddingTop="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tab2"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="65dp">
+                <ListView
+                    android:id="@+id/control_listview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:dividerHeight="3dp"
+                    android:padding="8dp"
+                    android:paddingTop="10dp"/>
+            </LinearLayout>
+        </FrameLayout>
+
+    </TabHost>
+</LinearLayout>
